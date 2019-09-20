@@ -7,13 +7,13 @@
  * @flow
  */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     StyleSheet,
     View,
     Image,
     Text,
-    TouchableHighlight,
+    TouchableOpacity,
     ViewPropTypes as RNViewPropTypes,
 } from 'react-native';
 import PropTypes from 'prop-types';
@@ -111,16 +111,17 @@ export default class CheckBox extends Component {
         }
 
         return (
-            <Image source={source} style={{tintColor: this._getTintColor()}}/>
+            <Image source={source} style={{ tintColor: this._getTintColor() }} />
         );
     }
 
     render() {
         return (
-            <TouchableHighlight
+            <TouchableOpacity
+                hitSlop={{ top: 16, left: 16, bottom: 16, right: 16 }}
                 style={this.props.style}
                 onPress={() => this.onClick()}
-                underlayColor='transparent'
+                //underlayColor='transparent'
                 disabled={this.props.disabled}
             >
                 <View style={styles.container}>
@@ -128,7 +129,7 @@ export default class CheckBox extends Component {
                     {this._renderImage()}
                     {this._renderRight()}
                 </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
         );
     }
 }
